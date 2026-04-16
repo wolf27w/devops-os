@@ -7,11 +7,11 @@ import (
 )
 
 type ProjectService struct {
-	repo *ProjectRepository
+	Repo *ProjectRepository
 }
 
 func NewProjectService(repo *ProjectRepository) *ProjectService {
-	return &ProjectService{repo: repo}
+	return &ProjectService{Repo: repo}
 }
 
 func (s *ProjectService) CreateProject(req *model.CreateProjectRequest, ownerID string) (*model.Project, error) {
