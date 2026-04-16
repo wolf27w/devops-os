@@ -12,9 +12,10 @@ func SetupPermissionRouter(
 	router *gin.Engine,
 	permissionEngine *permission.PermissionEngine,
 	projectMemberService *project.ProjectMemberService,
+	authMiddleware gin.HandlerFunc,
 ) {
 	api := router.Group("/api")
-	api.Use(AuthMiddleware)
+	api.Use(authMiddleware)
 
 	// 权限检查接口
 	api.GET("/permissions/check", func(c *gin.Context) {
@@ -58,7 +59,7 @@ func SetupPermissionRouter(
 
 		common.Success(c, gin.H{
 			"role":        role,
-			"permissions": permission.GetRolePermissions(role),
+			"permissions": permission.RolePermissions[role],
 		})
 	})
 }
