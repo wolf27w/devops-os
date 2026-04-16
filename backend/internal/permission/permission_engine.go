@@ -8,6 +8,7 @@ type PermissionEngine struct {
 	projectMemberService ProjectMemberService
 }
 
+// ProjectMemberService 接口定义
 type ProjectMemberService interface {
 	GetUserRoleInProject(userID, projectID string) (string, error)
 	IsUserInProject(userID, projectID string) (bool, error)

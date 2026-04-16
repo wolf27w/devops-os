@@ -1,0 +1,36 @@
+{
+  "system_roles": [
+    {
+      "id": "super_admin",
+      "name": "Super Administrator",
+      "description": "系统超级管理员，拥有所有权限",
+      "is_system": true
+    },
+    {
+      "id": "user",
+      "name": "普通用户",
+      "description": "系统普通用户",
+      "is_system": true
+    }
+  ],
+  "project_roles": [
+    {
+      "id": "project_admin",
+      "name": "项目管理员",
+      "description": "项目管理员，拥有项目内所有权限",
+      "is_system": false
+    },
+    {
+      "id": "developer",
+      "name": "开发者",
+      "description": "项目开发者，拥有开发相关权限",
+      "is_system": false
+    },
+    {
+      "id": "viewer",
+      "name": "观察者",
+      "description": "项目观察者，只有查看权限",
+      "is_system": false
+    }
+  ]
+}
