@@ -1,0 +1,8 @@
+{
+  "system_name": "DevOps OS",
+  "version": "1.0.0",
+  "jwt_secret": "devops-os-secret-key-change-in-production",
+  "default_role": "member",
+  "max_file_size": 10485760,
+  "allowed_extensions": [".json", ".md", ".txt", ".log"]
+}
