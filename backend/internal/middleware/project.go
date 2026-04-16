@@ -29,7 +29,7 @@ func ProjectMiddleware(projectService *project.ProjectService) gin.HandlerFunc {
 		}
 
 		// 检查用户是否在项目中
-		memberService := project.NewProjectMemberService(projectService.repo)
+		memberService := project.NewProjectMemberService(projectService.Repo)
 		inProject, err := memberService.IsUserInProject(userID.(string), projectID)
 		if err != nil || !inProject {
 			common.Error(c, 403, "Access denied to project")

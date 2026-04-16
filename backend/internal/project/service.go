@@ -22,12 +22,12 @@ func (s *ProjectService) CreateProject(req *model.CreateProjectRequest, ownerID 
 		Status:      "active",
 	}
 
-	if err := s.repo.Create(project); err != nil {
+	if err := s.Repo.Create(project); err != nil {
 		return nil, err
 	}
 
 	// 创建者自动成为 project_admin
-	if err := s.repo.AddMember(project.ID, ownerID, common.RoleProjectAdmin); err != nil {
+	if err := s.Repo.AddMember(project.ID, ownerID, common.RoleProjectAdmin); err != nil {
 		return nil, err
 	}
 
@@ -35,19 +35,19 @@ func (s *ProjectService) CreateProject(req *model.CreateProjectRequest, ownerID 
 }
 
 func (s *ProjectService) GetProject(projectID string) (*model.Project, error) {
-	return s.repo.GetByID(projectID)
+	return s.Repo.GetByID(projectID)
 }
 
 func (s *ProjectService) GetAllProjects() ([]model.Project, error) {
-	return s.repo.GetAll()
+	return s.Repo.GetAll()
 }
 
 func (s *ProjectService) GetUserProjects(userID string) ([]model.Project, error) {
-	return s.repo.GetUserProjects(userID)
+	return s.Repo.GetUserProjects(userID)
 }
 
 func (s *ProjectService) UpdateProject(projectID string, updates map[string]interface{}) (*model.Project, error) {
-	project, err := s.repo.GetByID(projectID)
+	project, err := s.Repo.GetByID(projectID)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func (s *ProjectService) UpdateProject(projectID string, updates map[string]inte
 
 	project.UpdatedAt = common.GenerateTimestamp()
 
-	if err := s.repo.Update(project); err != nil {
+	if err := s.Repo.Update(project); err != nil {
 		return nil, err
 	}
 
